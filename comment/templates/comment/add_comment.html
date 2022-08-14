@@ -1,0 +1,35 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block header %}
+  Add comment
+{% endblock %}
+
+{% block title %}
+  Add comment
+{% endblock %}
+
+{% block content %}
+ <section class="single_blog_area section_padding_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="row no-gutters">
+                        <div class="col-10 col-sm-11">
+                            <div class="leave-comment-area section_padding_50 clearfix">
+                                <div class="comment-form">
+                                    <form action="#" method="POST">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button type="submit" class="btn contact-btn">Add commend</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block header %}
+  Update recipe
+{% endblock %}
+
+{% block title %}
+  Update recipe
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    {% if user.id == object.creator.id %}
+ <section class="single_blog_area section_padding_80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="row no-gutters">
+                        <div class="col-10 col-sm-11">
+                            <div class="leave-comment-area section_padding_50 clearfix">
+                                <div class="comment-form">
+                                    <form action="#" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button type="submit" class="btn contact-btn">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <p>There is not you recipe</p>
+    {% endif%}
+{% else %}
+ <p>You are not login</p>
+                <div class="login">
+                  <a href="{% url 'login' %}">Log in</a>
+                </div>
+
+                <div class="register">
+                  <a href="{% url 'signup' %}">Sing up</a>
+                </div>
+
+{% endif %}
+
+{% endblock %}
